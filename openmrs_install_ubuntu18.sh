@@ -1,9 +1,9 @@
 #!/bin/sh
 
 echo "Please input a password for your mysql root user:"
-
+stty -echo
 read varpass
-
+stty echo
 quoted_varpass="'${varpass}'"
 
 
@@ -35,7 +35,7 @@ sudo apt install openjdk-8-jdk -y
 sudo apt install git -y
 sudo apt install maven -y
 sudo apt install curl -y
-
+sudo snap install intellij-idea-community --classic -y
 
 
 sudo mkdir /opt/tomcat
