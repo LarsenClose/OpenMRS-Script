@@ -1,11 +1,11 @@
 #!/bin/sh
 
 echo "Please input a password for your mysql root user:"
+echo "(don't forget this you will need it to run the webapp)"
 stty -echo
 read varpass
 stty echo
 quoted_varpass="'${varpass}'"
-
 
 echo "$USER ALL=(ALL) NOPASSWD:ALL" | sudo tee -a /etc/sudoers
 sudo apt update
@@ -35,8 +35,7 @@ sudo apt install openjdk-8-jdk -y
 sudo apt install git -y
 sudo apt install maven -y
 sudo apt install curl -y
-sudo snap install intellij-idea-community --classic -y
-
+sudo snap install intellij-idea-community --classic
 
 sudo mkdir /opt/tomcat
 sudo groupadd tomcat
@@ -76,13 +75,6 @@ WantedBy=multi-user.target
 EOT
 
 cd;git clone https://github.com/openmrs/openmrs-core.git
-
 cd openmrs-core; mvn clean install -DskipTests
-
-
 cd webapp; mvn tomcat:run &
-
-firefox http://localhost:8080/openmrs-webapp 
-
-
-
+firefox http://localhost:8080/openmrs-webapp
