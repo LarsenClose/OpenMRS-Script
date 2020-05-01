@@ -7,7 +7,6 @@ read varpass
 stty echo
 quoted_varpass="'${varpass}'"
 
-echo "$USER ALL=(ALL) NOPASSWD:ALL" | sudo tee -a /etc/sudoers
 sudo apt update
 sudo apt install mysql-server -y
 sudo mysql_secure_installation &> /dev/null << EOT
